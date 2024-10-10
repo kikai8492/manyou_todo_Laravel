@@ -13,7 +13,7 @@ class todosController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all;
+        $todos = Todo::all();
         return view('todos.index',compact('todos'));
     }
 
@@ -28,9 +28,11 @@ class todosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TodoRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Todo::create($validated);
+        return to_route('todos.index')-> with('success','追加しました');
     }
 
     /**
@@ -38,7 +40,8 @@ class todosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $todo = Todo::find($id);
+        return view('todos.show',compact('todo'));
     }
 
     /**
