@@ -64,9 +64,6 @@ class todosController extends Controller
         return to_route('todos.index') -> with('success','更新しました');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $todo = Todo::find($id);
