@@ -49,15 +49,19 @@ class todosController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $todo = Todo::find($id);
+        return view('todos.edit', ['todo' => $todo]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TodoRequest $request, string $id)
     {
-        //
+        $todo = Todo::find($id);
+        $validated = $request->validated();
+        $todo->update($validated);
+        return to_route('todos.index') -> with('success','更新しました');
     }
 
     /**
@@ -65,6 +69,8 @@ class todosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $todo = Todo::find($id);
+        $todo->delete();
+        return redirect()->route('todos.index')->with('success', 'タスクを削除しました');
     }
 }
