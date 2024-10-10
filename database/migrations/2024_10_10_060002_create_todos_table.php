@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('_todos', function (Blueprint $table) {
-            //
+        Schema::create('todos', function (Blueprint $table) {
+            $table->bigIncrements('id'); 
+            $table->string('title');
+            $table->text('content');
+            $table->dateTime('limit');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('_todos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('todos');
     }
 };
