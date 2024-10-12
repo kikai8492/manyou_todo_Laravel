@@ -20,14 +20,14 @@
     @csrf
     @method('PUT')
     <div>
-      <h4>タスク名:</h4><input type="text" name="title" id="title"/>
+      <h4>タスク名:</h4><input type="text" name="title" id="title" value = "{{ old('title', $todo->title) }}"/>
     </div>
 
     <div>
-      <h4>タスク詳細:</h4><input type="text" name="content" id="content"/>
+      <h4>タスク詳細:</h4><input type="text" name="content" id="content" value = "{{ old('content', $todo->content) }}"/>
     </div>
 
-    <h4>期限:<input type="datetime-local" name="limit"></h4>
+    <h4>期限:<input type="datetime-local" name="limit" value = "{{ old('limit', $todo->limit) }}"></h4>
 
     <div class="button">
       <button type="submit">更新</button>
