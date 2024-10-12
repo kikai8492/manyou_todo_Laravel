@@ -70,5 +70,4 @@ class todosController extends Controller
         $todo->delete();
         return redirect()->route('todos.index')->with('success', 'タスクを削除しました');
     }
-    //
 }
