@@ -7,7 +7,7 @@ use App\models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
 
-class todosController extends Controller
+class TodosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,15 @@ class todosController extends Controller
         // $todos = Todo::all();
         // return view('todos.index',compact('todos'));
 
-        $user = Auth::user;
+        $todos = Todo::where('user_id', \Auth::user()->id)->get();
         return view('todos.index',compact('todos'));
+
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      */
