@@ -13,4 +13,9 @@ class Todo extends Model
         'content',
         'limit'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
