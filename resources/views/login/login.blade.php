@@ -23,6 +23,7 @@
       <input type="password" name="password" placeholder="password">
       <button type="'submit" id="login-button">Login</button>
     </form>
+    <a href="{{ route('users.create') }}">サインアップ</a> 
   </div>
 </body>
 </html>

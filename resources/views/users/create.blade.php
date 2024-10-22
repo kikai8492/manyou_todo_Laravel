@@ -23,5 +23,6 @@
     <h3>パスワード(確認用)<input type="password" name="password_confirmation" id="password_confirmation"></input></h3>
     <button type='submit'>登録</button>
    <form> 
+   <a href="{{ route('login') }}">Login</a> 
 </body>
 </html>

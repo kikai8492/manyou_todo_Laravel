@@ -13,5 +13,5 @@ Route::resource('/todos',todosController::class);
 Route::resource('/users',UserController::class);
 Route::get('/login', function () {
   return view('login.login');
-});
+})->name('login'); 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
