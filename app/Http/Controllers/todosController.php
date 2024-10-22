@@ -16,9 +16,9 @@ class TodosController extends Controller
     {
         // $todos = Todo::all();
         // return view('todos.index',compact('todos'));
-
+        $user = Auth::user();
         $todos = Todo::where('user_id', \Auth::user()->id)->get();
-        return view('todos.index',compact('todos'));
+        return view('todos.index',compact('todos','user'));
 
     }
 
@@ -36,6 +36,7 @@ class TodosController extends Controller
     public function store(TodoRequest $request)
     {
         $validated = $request->validated();
+        $validated['user_id'] = Auth::id();
         Todo::create($validated);
         return to_route('todos.index')-> with('success','追加しました');
     }

@@ -6,6 +6,8 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>{{$user->name}}でログイン中</h1>
+  <a href="{{ route('login.login') }}">ログアウトする</a> 
   <h1>タスク一覧</h1>
   @if(session('success'))
 	<div>
