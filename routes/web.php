@@ -9,3 +9,6 @@ use App\Http\Controllers\UserController;
 
 Route::resource('/todos',todosController::class);
 Route::resource('/users',UserController::class);
+Route::get('/login', function () {
+  return view('login');
+});
